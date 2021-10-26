@@ -1,3 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin: 12px;
+}
+
+.buttonClear {
+  background: #cc0000;
+  border-radius: 12px;
+  padding: 16px 32px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 16px/1 "Open Sans", sans-serif;
+  text-align: center;
+}
+
+.buttonRainbow {
+  background: #e400ff;
+  background: linear-gradient(#e400ff, #00e9ff);
+  border-radius: 12px;
+  padding: 20px 45px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 16px/1 "Open Sans", sans-serif;
+  text-align: center;
+}
+
+.buttonBW {
+  background: #ffffff;
+  background: linear-gradient(#ffffff, #000000);
+  border-radius: 12px;
+  padding: 20px 45px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 16px/1 "Open Sans", sans-serif;
+  text-align: center;
+}
+
 .container {
   height: 95vh;
   display: flex;

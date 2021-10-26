@@ -34,7 +34,7 @@ function clearCells() {
 }
 
 //Button clears existing page, asks for new dimension, and calls color changing function.
-const buttonBW = document.querySelector(".BW");
+const buttonBW = document.querySelector(".buttonBW");
 buttonBW.addEventListener("click", function () {
   clearPage();
   const newGrid = prompt("Please enter a number for the size of the new grid.");
@@ -46,7 +46,7 @@ buttonBW.addEventListener("click", function () {
   }
 });
 
-const buttonRainbow = document.querySelector(".rainbow");
+const buttonRainbow = document.querySelector(".buttonRainbow");
 buttonRainbow.addEventListener("click", function () {
   clearPage();
   const newGrid = prompt("Please enter a number for the size of the new grid.");
@@ -58,7 +58,7 @@ buttonRainbow.addEventListener("click", function () {
   }
 });
 
-const buttonClear = document.querySelector(".clear");
+const buttonClear = document.querySelector(".buttonClear");
 buttonClear.addEventListener("click", function () {
   clearCells();
 });
