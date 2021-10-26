@@ -5,11 +5,15 @@
 }
 
 .cell {
-  border: solid black 2px;
+  border: solid rgb(116, 114, 114) 1px;
   flex-grow: 1;
 }
 
 .row {
   display: flex;
   flex-grow: 1;
+}
+
+.blue {
+  background-color: blue;
 }
