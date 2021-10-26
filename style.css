@@ -1,0 +1,15 @@
+.container {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cell {
+  border: solid black 2px;
+  flex-grow: 1;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
+}
