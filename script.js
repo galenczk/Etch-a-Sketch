@@ -1,5 +1,6 @@
 const container = document.querySelector(".container");
 
+//Creates a number * number grid
 function createPage(number) {
   for (i = 0; i < number; i++) {
     var row = document.createElement("div");
@@ -14,16 +15,82 @@ function createPage(number) {
   }
 }
 
-createPage(30);
+//Clears existing page.
+function clearPage() {
+  const rowCount = document.querySelectorAll(".row");
+  for (i = 0; i < rowCount.length; i++) {
+    const row = rowCount[i];
+    container.removeChild(row);
+  }
+}
 
-const cells = document.querySelectorAll(".cell");
+//Clears cells but keeps existing dimensions
+function clearCells() {
+  const cellCount = document.querySelectorAll(".cell");
+  for (i = 0; i < cellCount.length; i++) {
+    const cell = cellCount[i];
+    cell.style.backgroundColor = "";
+  }
+}
 
-for (i = 0; i < cells.length; i++) {
-  const cell = cells[i];
-  cells[i].addEventListener("mouseover", function () {
-    cell.style.backgroundColor = "black";
-  });
-  cells[i].addEventListener("mouseout", function () {
-    cell.style.backgroundColor = "white";
-  });
+//Button clears existing page, asks for new dimension, and calls color changing function.
+const buttonBW = document.querySelector(".BW");
+buttonBW.addEventListener("click", function () {
+  clearPage();
+  const newGrid = prompt("Please enter a number for the size of the new grid.");
+  if (newGrid >= 100) {
+    alert("That number is too large, try something smaller.");
+  } else {
+    createPage(newGrid);
+    effectBW();
+  }
+});
+
+const buttonRainbow = document.querySelector(".rainbow");
+buttonRainbow.addEventListener("click", function () {
+  clearPage();
+  const newGrid = prompt("Please enter a number for the size of the new grid.");
+  if (newGrid > 100) {
+    alert("That number is too large, try something smaller.");
+  } else {
+    createPage(newGrid);
+    effectRainbow();
+  }
+});
+
+const buttonClear = document.querySelector(".clear");
+buttonClear.addEventListener("click", function () {
+  clearCells();
+});
+
+//Creates the greyscale change effect on mouseover.
+function effectBW() {
+  const cells = document.querySelectorAll(".cell");
+  for (i = 0; i < cells.length; i++) {
+    const cell = cells[i];
+
+    let greyScale = 90;
+    cells[i].addEventListener("mouseover", function () {
+      cell.style.backgroundColor = `hsl(180, 0%, ${greyScale}%)`;
+      while (greyScale > 0) {
+        greyScale -= 10;
+        break;
+      }
+    });
+  }
+}
+
+//Creates the rainbow effect on mouseover.
+function effectRainbow() {
+  const cells = document.querySelectorAll(".cell");
+  for (i = 0; i < cells.length; i++) {
+    const cell = cells[i];
+
+    cells[i].addEventListener("mouseover", function () {
+      const randomRed = Math.floor(Math.random() * 256);
+      const randomGreen = Math.floor(Math.random() * 256);
+      const randomBlue = Math.floor(Math.random() * 256);
+      cell.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+    });
+  }
 }
