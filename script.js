@@ -94,3 +94,6 @@ function effectRainbow() {
     });
   }
 }
+
+//Would be cool if the rainbow function also had a "shade-in" feature.  Fix the
+//random color and shade-in on subsequent mouseovers.
