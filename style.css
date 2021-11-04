@@ -1,3 +1,7 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -13,36 +17,40 @@ button {
   padding: 16px 32px;
   color: #ffffff;
   display: inline-block;
-  font: normal bold 16px/1 "Open Sans", sans-serif;
+  font: normal bold 24px/1 "Open Sans", sans-serif;
   text-align: center;
+  width: 30vw;
 }
 
 .buttonRainbow {
   background: #e400ff;
   background: linear-gradient(#e400ff, #00e9ff);
   border-radius: 12px;
-  padding: 20px 45px;
+  padding: 20px px;
   color: #ffffff;
   display: inline-block;
   font: normal bold 16px/1 "Open Sans", sans-serif;
   text-align: center;
+  width: 10vw;
 }
 
 .buttonBW {
   background: #ffffff;
   background: linear-gradient(#ffffff, #000000);
   border-radius: 12px;
-  padding: 20px 45px;
+  padding: 20px;
   color: #ffffff;
   display: inline-block;
   font: normal bold 16px/1 "Open Sans", sans-serif;
   text-align: center;
+  width: 10vw;
 }
 
 .container {
-  height: 95vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
+  align-self: center;
 }
 
 .cell {

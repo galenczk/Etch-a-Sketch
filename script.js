@@ -14,7 +14,14 @@ function createPage(number) {
       row.appendChild(cell);
     }
   }
+  const containerHeight =
+    window.innerHeight * 0.85;
+  container.style.height = containerHeight + "px";
+  container.style.width = containerHeight + "px";
 }
+
+createPage(12);
+effectRainbow();
 
 //Clears existing page.
 function clearPage() {
@@ -113,23 +120,24 @@ function effectRainbow() {
   for (i = 0; i < cells.length; i++) {
     const cell = cells[i];
 
+    let opacity = 10;
     cells[i].addEventListener(
       "mouseover",
       function () {
-        const randomRed = Math.floor(
-          Math.random() * 256,
-        );
-        const randomGreen = Math.floor(
-          Math.random() * 256,
-        );
-        const randomBlue = Math.floor(
-          Math.random() * 256,
-        );
-        cell.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+        if (!cell.style.backgroundColor) {
+          const randomHue = Math.floor(
+            Math.random() * 360,
+          );
+          cell.style.backgroundColor = `hsl(${randomHue}, 90%, 50%`;
+          cell.style.filter = `opacity(${opacity}%)`;
+        } else {
+          while (opacity < 100) {
+            opacity += 5;
+            cell.style.filter = `opacity(${opacity}%)`;
+            break;
+          }
+        }
       },
     );
   }
 }
-
-//Would be cool if the rainbow function also had a "shade-in" feature.  Fix the
-//random color and shade-in on subsequent mouseovers.
