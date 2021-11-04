@@ -1,6 +1,10 @@
 const container =
   document.querySelector(".container");
 
+let newGrid = 30;
+let effectSet = 0; //Setting for either black and white mode, or rainbow
+createPage(newGrid);
+
 //Creates a number * number grid
 function createPage(number) {
   for (i = 0; i < number; i++) {
@@ -18,10 +22,13 @@ function createPage(number) {
     window.innerHeight * 0.85;
   container.style.height = containerHeight + "px";
   container.style.width = containerHeight + "px";
-}
 
-createPage(12);
-effectRainbow();
+  if (effectSet === 1) {
+    effectRainbow();
+  } else if (effectSet === 0) {
+    effectBW();
+  }
+}
 
 //Clears existing page.
 function clearPage() {
@@ -35,12 +42,16 @@ function clearPage() {
 
 //Clears cells but keeps existing dimensions
 function clearCells() {
+  clearPage();
+  createPage(newGrid);
+  /*
   const cellCount =
     document.querySelectorAll(".cell");
   for (i = 0; i < cellCount.length; i++) {
     const cell = cellCount[i];
     cell.style.backgroundColor = "";
   }
+  */
 }
 
 //Button clears existing page, asks for new dimension, and calls color changing function.
@@ -48,7 +59,7 @@ const buttonBW =
   document.querySelector(".buttonBW");
 buttonBW.addEventListener("click", function () {
   clearPage();
-  const newGrid = prompt(
+  newGrid = prompt(
     "Please enter a number for the size of the new grid.",
   );
   if (newGrid >= 100) {
@@ -56,8 +67,8 @@ buttonBW.addEventListener("click", function () {
       "That number is too large, try something smaller.",
     );
   } else {
+    effectSet = 0;
     createPage(newGrid);
-    effectBW();
   }
 });
 
@@ -68,7 +79,7 @@ buttonRainbow.addEventListener(
   "click",
   function () {
     clearPage();
-    const newGrid = prompt(
+    newGrid = prompt(
       "Please enter a number for the size of the new grid.",
     );
     if (newGrid > 100) {
@@ -76,8 +87,8 @@ buttonRainbow.addEventListener(
         "That number is too large, try something smaller.",
       );
     } else {
+      effectSet = 1;
       createPage(newGrid);
-      effectRainbow();
     }
   },
 );
@@ -129,10 +140,10 @@ function effectRainbow() {
             Math.random() * 360,
           );
           cell.style.backgroundColor = `hsl(${randomHue}, 90%, 50%`;
-          cell.style.filter = `opacity(${opacity}%)`;
+          cell.style.filter = `opacity(10%)`;
         } else {
           while (opacity < 100) {
-            opacity += 5;
+            opacity += 20;
             cell.style.filter = `opacity(${opacity}%)`;
             break;
           }

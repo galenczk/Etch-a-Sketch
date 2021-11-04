@@ -1,6 +1,8 @@
 body {
   display: flex;
   flex-direction: column;
+  background-image: url("images/desk.jpg");
+  background-size: 100vw;
 }
 .header {
   display: flex;
@@ -51,6 +53,7 @@ button {
   display: flex;
   flex-direction: column;
   align-self: center;
+  background-color: white;
 }
 
 .cell {
